@@ -1,0 +1,47 @@
+.object {
+    opacity: 0;
+}
+
+.first {
+    animation-name: showBox;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+    opacity: 0;
+}
+
+.second {
+    animation-name: showBox;
+    animation-delay: 0.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+    opacity: 0;
+}
+
+.third {
+    animation-name: showBox;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+    opacity: 0;
+}
+
+.fourth {
+    animation-name: showBox;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+    opacity: 0;
+}
+
+
+@keyframes showBox {
+    from {
+        opacity: 0;
+        transform: translateY(10%);
+    } 
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
