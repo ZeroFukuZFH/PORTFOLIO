@@ -1,6 +1,9 @@
 "use client"
 
+import Terminal from "@/app/components/ascii_renderer/terminal"
 import AsciiRenderer from "@/app/components/ascii_renderer/ascii_renderer"
+import Preview from "@/app/components/preview_terminal/preview"
+import { PreviewContentProps } from "@/app/components/preview_terminal/preview"
 
 const cyber_ascii : string[][] = [
 [
@@ -8,7 +11,7 @@ const cyber_ascii : string[][] = [
     "             *@.              ",
     "            -@@@.             ",
     "           :@@@@%.            ",
-    "          .@@@@@@* ",
+    "          .@@@@@@*            ",
     "         .%:%@@@@@+           ",
     "         %@@@@@@@@@+          ",
     "        #@@@@@@@@@@@=         ",
@@ -16,10 +19,10 @@ const cyber_ascii : string[][] = [
     "      %@@@@@%:.+@@@@@@=       ",
     "     @@@@@@#    .@@@@@@-      ",
     "   .%@@@@@@.     *@@@@#@-     ",
-    "  .@@@@@@@@.     +@@@@@@-     ",
+    "  .@@@@@@@@.     +@@@@@@@-    ",
     " .%@@@@#=..       .-+@@@@@-   ",
-    ".%@%.                  .=@@=..",
-    "-.                         :: "
+    ".%@%.                 .=@@=.  ",
+    "-.                        ::. "
 ]
 
 ]
@@ -30,12 +33,41 @@ const content = {
     button: ['$View Credibility','$Fuck you button']
 }
 
+const preview : PreviewContentProps[] = [
+    {
+            image: "",
+            title: "",
+            desc: "",
+            buttonChildren: ""
+        },
+        {
+            image: "",
+            title: "",
+            desc: "",
+            buttonChildren: ""
+        },
+        {
+            image: "",
+            title: "",
+            desc: "",
+            buttonChildren: ""
+        },
+        {
+            image: "",
+            title: "",
+            desc: "",
+            buttonChildren: ""
+        }
+]
+
 export default function WebDev(){
     
     return (
-        <section className="flex justify-center items-center w-full h-screen text-white">
+        <section className="flex flex-col justify-center items-center w-full h-screen text-white">
             <div className="w-[80vw] flex flex-row text-center items-center justify-center">
-                <AsciiRenderer animated_object={cyber_ascii}/>
+                <Terminal>
+                    <AsciiRenderer animated_object={cyber_ascii}/>
+                </Terminal>
                 <div className="flex flex-col gap-4 text-left">
                     <div className="bg-white p-4 min-w-70">
                         <h1 className="text-black text-2xl">{content.title}</h1>
@@ -47,6 +79,7 @@ export default function WebDev(){
                     </div>
                 </div>
             </div>
+            <Preview content={preview}/>
         </section>
     )
 }
