@@ -1,38 +1,23 @@
 "use client"
 
-import Terminal from "@/app/components/ascii_renderer/terminal"
-import AsciiRenderer from "@/app/components/ascii_renderer/ascii_renderer"
 import Preview from "@/app/components/preview_terminal/preview"
 import { PreviewContentProps } from "@/app/components/preview_terminal/preview"
 import useOnScreen from "@/app/components/custom_hooks/useOnScreen"
 import { useRef } from "react"
 import "./native_animations.css"
+import Image from "next/image"
+import flutter from "../../assets/native_stack/flutter.svg"
+import sqlite from "../../assets/native_stack/sqlite.svg"
 
-const cyber_ascii: string[][] = [
-  [
-    "             .:               ",
-    "             *@.              ",
-    "            -@@@.             ",
-    "           :@@@@%.            ",
-    "          .@@@@@@*            ",
-    "         .%:%@@@@@+           ",
-    "         %@@@@@@@@@+          ",
-    "        #@@@@@@@@@@@=         ",
-    "       #@@@@@@@@@@@@@=        ",
-    "      %@@@@@%:.+@@@@@@=       ",
-    "     @@@@@@#    .@@@@@@-      ",
-    "   .%@@@@@@.     *@@@@#@-     ",
-    "  .@@@@@@@@.     +@@@@@@@-    ",
-    " .%@@@@#=..       .-+@@@@@-   ",
-    ".%@%.                 .=@@=.  ",
-    "-.                        ::. "
-  ]
+const tech_stack = [
+    flutter,
+    sqlite
 ]
 
 const content = {
   title: 'Native Apps',
   paragraph: 'I use Arch BTW',
-  button: ['$View Credibility', '$Fuck you button']
+  button: ['open project','view github repo']
 }
 
 const preview: PreviewContentProps[] = [
@@ -71,11 +56,13 @@ export default function Native() {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center w-full h-auto text-white" ref={elementRef}>
+    <section className="flex flex-col flex-wrap justify-center items-center w-full min-h-screen text-white" ref={elementRef}>
       <div className="w-[80vw] flex flex-row text-center items-center justify-center">
-        <Terminal className={getAnimationClass("object", "down")}>
-          <AsciiRenderer animated_object={cyber_ascii} />
-        </Terminal>
+        <div className={"flex flex-row flex-wrap gap-10 p-10 m-10" + getAnimationClass("object", "down")}>
+          {tech_stack.map((item,index)=>(
+            <Image key={index} src={item} alt="null" width={60} height={60}/>
+          ))}
+        </div>
         <div className="flex flex-col gap-4 text-left">
           <TitleBar className={getAnimationClass("object", "right")} />
           <Body className={getAnimationClass("object", "left")} />

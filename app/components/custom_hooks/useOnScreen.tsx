@@ -24,6 +24,7 @@ export default function useOnScreen(ref:RefObject<null>) {
         observer.disconnect();
       }
     };
+    
   }, [ref]);
 
   return isOnScreen;

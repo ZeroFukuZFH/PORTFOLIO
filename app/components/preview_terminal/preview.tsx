@@ -4,9 +4,6 @@ import {useRef} from "react";
 import useOnScreen from "../custom_hooks/useOnScreen";
 import "./preview_animations.css"
 
-
-
-
 export interface PreviewContentProps {
     title : string;
     desc : string;
@@ -23,13 +20,10 @@ export default function Preview({ content }: { content: PreviewContentProps[] })
     };
 
     return (
-        <div 
-            className="w-[80vw] flex flex-col text-center items-center justify-center" 
-            ref={elementRef}
-        >
-            <h1 className="mb-8">PREVIEW</h1>
+        <div className="w-[80vw] m-20 gap-10 flex flex-col flex-wrap text-center items-center justify-center" ref={elementRef}>
+            <h1>PREVIEW</h1>
             
-            <div className="flex flex-row">
+            <div className="flex flex-row flex-wrap">
                 <Terminal showTime={false} className={getAnimationClass("object", "first")} title="--$project-1">
                     <PreviewContent {...content[0]} />
                 </Terminal>
@@ -37,15 +31,7 @@ export default function Preview({ content }: { content: PreviewContentProps[] })
                     <PreviewContent {...content[1]} />
                 </Terminal>
             </div>
-
-            <div className="flex flex-row">
-                <Terminal showTime={false} className={getAnimationClass("object", "third")} title="--$project-3">
-                    <PreviewContent {...content[2]} />
-                </Terminal >
-                <Terminal showTime={false} className={getAnimationClass("object", "fourth")} title="--$project-4">
-                    <PreviewContent {...content[3]} />
-                </Terminal>
-            </div>
+            <button className="border-2 border-solid border-white p-3 cursor-pointer rounded-xl">see more</button>
         </div>
     );
 }

@@ -1,38 +1,27 @@
 "use client"
 
-import Terminal from "@/app/components/ascii_renderer/terminal"
-import AsciiRenderer from "@/app/components/ascii_renderer/ascii_renderer"
+import Image from "next/image"
 import Preview from "@/app/components/preview_terminal/preview"
 import { PreviewContentProps } from "@/app/components/preview_terminal/preview"
 import useOnScreen from "@/app/components/custom_hooks/useOnScreen"
-import { Ref, useRef } from "react"
+import { useRef } from "react"
 import "./webdev_animations.css"
+import express from "../../assets/web_stack/express.svg"
+import mongodb from "../../assets/web_stack/mongodb.svg"
+import nodejs from "../../assets/web_stack/nodejs.svg"
+import reactsvg from "../../assets/web_stack/react.svg"
 
-const cyber_ascii: string[][] = [
-    [
-        "             .:               ",
-        "             *@.              ",
-        "            -@@@.             ",
-        "           :@@@@%.            ",
-        "          .@@@@@@*            ",
-        "         .%:%@@@@@+           ",
-        "         %@@@@@@@@@+          ",
-        "        #@@@@@@@@@@@=         ",
-        "       #@@@@@@@@@@@@@=        ",
-        "      %@@@@@%:.+@@@@@@=       ",
-        "     @@@@@@#    .@@@@@@-      ",
-        "   .%@@@@@@.     *@@@@#@-     ",
-        "  .@@@@@@@@.     +@@@@@@@-    ",
-        " .%@@@@#=..       .-+@@@@@-   ",
-        ".%@%.                 .=@@=.  ",
-        "-.                        ::. "
-    ]
+const tech_stack = [
+    express,
+    mongodb,
+    nodejs,
+    reactsvg
 ]
 
 const content = {
     title: 'Web Development',
     paragraph: 'I use Arch BTW',
-    button: ['$View Credibility', '$Fuck you button']
+    button: ['open project','view github repo']
 }
 
 const preview: PreviewContentProps[] = [
@@ -71,11 +60,14 @@ export default function WebDev() {
     };
 
     return (
-        <section className="flex flex-col justify-center items-center w-full h-auto text-white" ref={elementRef}>
+        <section className="flex flex-col flex-wrap justify-center items-center w-full min-h-screen text-white" ref={elementRef}>
             <div className="w-[80vw] flex flex-row text-center items-center justify-center">
-                <Terminal className={getAnimationClass("object", "down")}>
-                    <AsciiRenderer animated_object={cyber_ascii} />
-                </Terminal>
+                <div className={"flex flex-row flex-wrap gap-10 p-10 m-10" + getAnimationClass("object", "down")}>
+                    {tech_stack.map((item,index)=>(
+                        <Image key={index} src={item} alt="null" width={60} height={60}/>
+                    ))}
+                </div>
+
                 <div className="flex flex-col gap-4 text-left">
                     <TitleBar className={getAnimationClass("object", "right")} />
                     <Body className={getAnimationClass("object", "left")} />
@@ -89,12 +81,16 @@ export default function WebDev() {
 }
 
 function Buttons({ className }: { className?: string }) {
-    return (
-        <div className={"flex flex-row gap-2 " + (className ?? "")}>
-            <button className="cursor-pointer text border border-solid border-white w-full flex-1 p-2 rounded-[6px]">{content.button[0]}</button>
-            <button className="cursor-pointer text border border-solid border-white w-full flex-1 p-2 rounded-[6px]">{content.button[1]}</button>
-        </div>
-    )
+  return (
+    <div className={"flex flex-row gap-2 " + (className ?? "")}>
+      <button className="cursor-pointer text border border-solid border-white w-full flex-1 p-2 rounded-[6px]">
+        {content.button[0]}
+      </button>
+      <button className="cursor-pointer text border border-solid border-white w-full flex-1 p-2 rounded-[6px]">
+        {content.button[1]}
+      </button>
+    </div>
+  )
 }
 
 function Body({ className }: { className?: string }) {

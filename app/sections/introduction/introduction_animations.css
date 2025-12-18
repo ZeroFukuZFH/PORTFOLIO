@@ -1,0 +1,20 @@
+.object {
+    opacity: 0;
+}
+
+.show {
+    animation-name: isVisible;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes isVisible {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
