@@ -44,7 +44,7 @@ export default function CyberSecurity(){
     };
 
     return (
-        <section className="flex flex-col flex-wrap justify-center items-center w-full min-h-screen text-white" ref={elementRef}>
+        <section className="flex flex-col flex-wrap justify-center items-center min-w-screen min-h-screen text-white" ref={elementRef}>
             <div className="w-[80vw] flex flex-row text-center items-center justify-center">
                 <Terminal className={getAnimationClass("object","down")}>
                     <AsciiRenderer animated_object={cyber_ascii}/>

@@ -73,12 +73,11 @@ export default function Home() {
         scrollToSocials={() => scrollToSection(socials)}
         scrollToGameDev={() => scrollToSection(gamedev)}
       />
-      <div className="h-full w-full flex flex-col gap-80 bg-black font-mono relative">
+      <div className="h-full w-full flex flex-col justify-center gap-80 bg-black font-mono relative">
         {render.map((section, index) => (
           <div 
             key={index} 
             ref={section.sectionRef}
-            className="p-10"
           >
             {section.sectionJSX}
           </div>

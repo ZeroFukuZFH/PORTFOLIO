@@ -56,23 +56,39 @@ export default function GameDev() {
     };
 
     return (
-        <section className="flex flex-col flex-wrap justify-center items-center w-full min-h-screen text-white" ref={elementRef}>
-            <div className="w-[80vw] flex flex-row text-center items-center justify-center">
-                <div className={"flex flex-row flex-wrap gap-10 p-10 m-10" + getAnimationClass("object", "down")}>
-                    {tech_stack.map((item,index)=>(
-                        <Image key={index} src={item} alt="null" width={60} height={60}/>
-                    ))}
+            <section className="flex flex-col justify-center items-center min-h-screen w-screen text-white py-60 sm:py-40 lg:py-50 px-4 sm:px-6 lg:px-8" ref={elementRef}>
+                
+                <div className="flex flex-col lg:flex-row justify-center items-center gap-8 md:gap-12 lg:gap-16 w-full max-w-7xl">
+                    
+                    <div className={"flex flex-row flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10 p-6 md:p-8 lg:p-10 order-2 lg:order-1" + getAnimationClass("object", "down")}>
+                        {tech_stack.map((item,index)=>(
+                            <Image 
+                                key={index} 
+                                src={item} 
+                                alt="tech stack icon" 
+                                width={56} 
+                                height={56}
+                                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20"
+                            />
+                        ))}
+                    </div>
+    
+                    <div className="flex flex-col justify-center items-center lg:items-start gap-4 sm:gap-6 text-center lg:text-left w-full lg:w-auto order-1 lg:order-2">
+                        <div className="w-full flex justify-center lg:justify-start">
+                            <TitleBar className={getAnimationClass("object", "right")} />
+                        </div>
+                        <div className="w-full max-w-2xl">
+                            <Body className={getAnimationClass("object", "left") + " text-center lg:text-left"} />
+                        </div>
+                        <div className="w-full flex justify-center lg:justify-start">
+                            <Buttons className={getAnimationClass("object", "up")} />
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-4 text-left">
-                    <TitleBar className={getAnimationClass("object", "right")} />
-                    <Body className={getAnimationClass("object", "left")} />
-                    <Buttons className={getAnimationClass("object", "up")} />
-                </div>
-            </div>
-
-            <Preview content={preview} />
-        </section>
-    )
+    
+                <Preview content={preview} />
+            </section>
+        )
 }
 
 function Buttons({ className }: { className?: string }) {
