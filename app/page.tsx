@@ -7,8 +7,9 @@ import WebDev from "./sections/fullstack-webdev/webdev";
 import Introduction from "./sections/introduction/introduction";
 import GameDev from "./sections/game-development/gamedev";
 import Socials from "./sections/socials/socials";
-
-interface SectionProps {
+import OtherProjects from "./sections/other_projects/other_projects";
+import EmbeddedSystems from "./sections/embedded_systems/embedded_systems";
+export interface SectionProps {
   sectionRef: RefObject<HTMLDivElement | null>;
   sectionJSX: JSX.Element;
   sectionName: string;
@@ -22,6 +23,8 @@ export default function Home() {
   const cybersec = useRef<HTMLDivElement>(null);
   const socials = useRef<HTMLDivElement>(null);
   const gamedev = useRef<HTMLDivElement>(null);
+  const embedded = useRef<HTMLDivElement>(null);
+  const others = useRef<HTMLDivElement>(null);
 
   const render: SectionProps[] = [
     {
@@ -50,35 +53,29 @@ export default function Home() {
       sectionName: "game dev"
     },
     {
+      sectionRef: embedded,
+      sectionJSX: <EmbeddedSystems/>,
+      sectionName: "embedded systems"
+    },
+    {
+      sectionRef: others,
+      sectionJSX: <OtherProjects/>,
+      sectionName: "others"
+    },
+    {
       sectionRef: socials,
       sectionJSX: <Socials />,
       sectionName: "socials"
     }
   ];
-
-  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-    if (ref?.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+  
   return (
     <>
       <InnerShadow />
-      <SideScrollEffect 
-        scrollToHome={() => scrollToSection(home)}
-        scrollToWebDev={() => scrollToSection(webdev)}
-        scrollToNative={() => scrollToSection(native)}
-        scrollToCyberSec={() => scrollToSection(cybersec)}
-        scrollToSocials={() => scrollToSection(socials)}
-        scrollToGameDev={() => scrollToSection(gamedev)}
-      />
+      <SideScrollEffect collection={render} />
       <div className="h-full w-full flex flex-col justify-center gap-80 bg-black font-mono relative">
         {render.map((section, index) => (
-          <div 
-            key={index} 
-            ref={section.sectionRef}
-          >
+          <div key={index} ref={section.sectionRef}>
             {section.sectionJSX}
           </div>
         ))}
@@ -87,58 +84,27 @@ export default function Home() {
   );
 }
 
-interface SideScrollEffectProps {
-  scrollToHome: () => void;
-  scrollToWebDev: () => void; 
-  scrollToNative: () => void; 
-  scrollToCyberSec: () => void; 
-  scrollToSocials: () => void;
-  scrollToGameDev: () => void;
-}
-
 function SideScrollEffect({ 
-  scrollToHome,
-  scrollToWebDev, 
-  scrollToNative, 
-  scrollToCyberSec, 
-  scrollToSocials,
-  scrollToGameDev
-}: SideScrollEffectProps) {
+  collection,
+}: {collection:SectionProps[]}) {
+
+    const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+        if (ref?.current) {
+          ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
   const listStyles = "opacity-70 hover:opacity-100 transition-all duration-300 cursor-pointer hover:-translate-x-2 group relative";
-
+    
   return (
     <div className="fixed right-0 text-right top-1/2 transform -translate-y-1/2 p-10 text-white z-50">
       <ul className="space-y-8">
-        <li className={listStyles} onClick={() => scrollToHome()}>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
-          <span className="text-sm tracking-wider">home</span>
-        </li>
-
-        <li className={listStyles} onClick={() => scrollToWebDev()}>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
-          <span className="text-sm tracking-wider">web dev</span>
-        </li>
-
-        <li className={listStyles} onClick={() => scrollToNative()}>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
-          <span className="text-sm tracking-wider">native apps</span>
-        </li>
-
-        <li className={listStyles} onClick={() => scrollToCyberSec()}>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
-          <span className="text-sm tracking-wider">cybersecurity</span>
-        </li>
-
-        <li className={listStyles} onClick={() => scrollToGameDev()}>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
-          <span className="text-sm tracking-wider">game dev</span>
-        </li>
-
-        <li className={listStyles} onClick={() => scrollToSocials()}>
-          <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
-          <span className="text-sm tracking-wider">socials</span>
-        </li>
+        {collection.map((item,index)=>(
+            <li className={listStyles} key={index} onClick={() => scrollToSection(item.sectionRef)}>
+                <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300" />
+                <span className="text-sm tracking-wider">{item.sectionName}</span>
+            </li>
+        ))}
       </ul>
     </div>
   );

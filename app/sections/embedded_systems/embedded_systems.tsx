@@ -4,18 +4,17 @@ import Preview from "@/app/components/preview_terminal/preview"
 import { PreviewContentProps } from "@/app/components/preview_terminal/preview"
 import useOnScreen from "@/app/components/custom_hooks/useOnScreen"
 import { useRef } from "react"
-import "./gamedev_animations.css"
-import blender from "../../assets/gamedev_stack/blender.svg"
-import godot from "../../assets/gamedev_stack/godot.svg"
+import python from "../../assets/embedded_stack/python.svg"
+import embedded from "../../assets/embedded_stack/cplusplus.svg"
 import Image from "next/image"
 
 const tech_stack = [
-    blender,
-    godot
+    python,
+    embedded
 ]
 
 const content = {
-    title: 'Game Development',
+    title: 'Embedded Systems',
     paragraph: 'I use Arch BTW',
     button: ['open project','view github repo']
 }
@@ -23,19 +22,19 @@ const content = {
 const preview: PreviewContentProps[] = [
     {
         image: "https://placehold.co/400",
-        title: "Coming soon",
-        desc: "coming soon",
+        title: "DIY N.A.S setup / mini-server",
+        desc: "Needed a mini Server to store our project data for Machine-Learning and electronic systems",
         buttonChildren: "open project"
     },
     {
         image: "https://placehold.co/400",
-        title: "3D shooter arkham/doom-like",
-        desc: "I really like the arkham series and doom eternal so i made a game with elements of both games that i liked",
+        title: "Gesture Recognition with Neural Networks",
+        desc: "I wanted to be tony stark for i guess (?). this was an application of my knowledge acquired after backtesting some strategies for quantitative trading",
         buttonChildren: "open project"
     },
 ]
 
-export default function GameDev() {
+export default function EmbeddedSystems() {
     const elementRef = useRef(null);
     const isOnScreen = useOnScreen(elementRef);
 
@@ -91,8 +90,8 @@ function Body({ className }: { className?: string }) {
 
 function TitleBar({ className }: { className?: string }) {
     return (
-        <div className={"bg-white p-4 min-w-70 " + (className ?? "")}>
-            <h1 className="text-black text-2xl">{content.title}</h1>
+        <div className={"flex flex-wrap bg-white p-4 min-w-70 " + (className ?? "")}>
+            <h1 className="flex flex-wrap text-black text-2xl">{content.title}</h1>
         </div>
     )
 }

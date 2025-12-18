@@ -53,23 +53,17 @@ function PreviewContent({
     buttonChildren,
 }: PreviewProps) {
     return (
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4 p-3">
+        <div className="w-full overflow-y-auto flex flex-col md:flex-row gap-3 md:gap-4 p-3">
 
-            <div className="flex-1 flex justify-center md:justify-start">
+            <div className="flex-1 flex flex-wrap justify-center md:justify-start">
                 <div className="relative w-full max-w-xs h-32 sm:h-36 md:h-40 lg:h-44">
-                    <Image 
-                        src={image} 
-                        fill
-                        alt={title || "Project preview"}
-                        className="object-cover rounded-lg"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                    <Image src={image} fill alt={title || "Project preview"} className="object-cover rounded-lg" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
                 </div>
             </div>
 
-            <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left gap-2 sm:gap-3">
-                <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">{title}</h1>
-                <p className="text-xs sm:text-sm md:text-base text-gray-300 line-clamp-3">{desc}</p>
+            <div className="flex-1 flex flex-col flex-wrapjustify-center items-center md:items-start text-center md:text-left gap-2 sm:gap-3">
+                <h1 className="wrap-break-word whitespace-normal text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">{title}</h1>
+                <p className="wrap-break-word whitespace-normal text-xs sm:text-sm md:text-base text-gray-300 line-clamp-3">{desc}</p>
                 <button className="border border-solid border-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg cursor-pointer hover:bg-white hover:text-black transition-all duration-300 active:scale-[0.98] text-xs sm:text-sm">
                     {buttonChildren}
                 </button>

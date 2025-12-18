@@ -10,7 +10,6 @@ import x from "../../assets/socials/x.svg";
 import useDelayString from "@/app/components/custom_hooks/useDelayString";
 import Link from "next/link";
 import { IconProps } from "@/app/components/custom_hooks/useDelayString";
-
 const svg : IconProps[] = [
     {
         icon:github,
@@ -34,19 +33,19 @@ const svg : IconProps[] = [
 export default function Socials() {
     const elementRef = useRef(null);
     const isOnScreen = useOnScreen(elementRef);
-    const delayedSvg = useDelayString(svg,isOnScreen)
-
+  
     return (
         <section className="flex flex-col min-h-screen w-screen text-white justify-center items-center gap-5" ref={elementRef}>
             <h1>SOCIALS</h1>
-            <DelayMapping toMap={delayedSvg}/>
+            <DelayMapping toMap={useDelayString(svg,isOnScreen,1000,100)}/>
         </section>
     )
 }
 
 function DelayMapping({toMap}:{toMap:IconProps[]}){
+
     return (
-        <div className="flex flex-row gap-10">
+        <div className="flex flex-row gap-10 min-w-screen justify-center">
             {toMap.map((item,index)=>(
                 <div key={index}>
                     <Link href={item.link}><Image src={item.icon} width={32} height={32} alt="null"/></Link>

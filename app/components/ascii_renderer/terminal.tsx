@@ -26,7 +26,7 @@ export default function Terminal({
         <MacOSWindowButtons />
         <span>{title}</span>
       </div>
-      <div suppressHydrationWarning className="p-4 whitespace-pre text-left">
+      <div suppressHydrationWarning className="flex flex-wrap p-4 whitespace-pre text-left">
         {showTime && `Last login: ${last_login} on console`}
         {children}
       </div>

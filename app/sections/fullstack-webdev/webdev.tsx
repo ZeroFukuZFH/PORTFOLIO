@@ -27,28 +27,16 @@ const content = {
 const preview: PreviewContentProps[] = [
     {
         image: "https://placehold.co/400",
-        title: "",
-        desc: "",
-        buttonChildren: ""
+        title: "Fullstack Development Resource for Beginner Devs",
+        desc: "During college, wanted to help teach my juniors about how to do fullstack development before the time we were supposed to learn it",
+        buttonChildren: "open project"
     },
     {
         image: "https://placehold.co/400",
-        title: "",
-        desc: "",
-        buttonChildren: ""
+        title: "Pseudo-gdrive for Personally Hosted Cloud Storage Server",
+        desc: "We needed a website for NAS file transfer and visualization like gdrive so this may be gdrive duplicate",
+        buttonChildren: "open project"
     },
-    {
-        image: "https://placehold.co/400",
-        title: "",
-        desc: "",
-        buttonChildren: ""
-    },
-    {
-        image: "https://placehold.co/400",
-        title: "",
-        desc: "",
-        buttonChildren: ""
-    }
 ]
 
 export default function WebDev() {
@@ -66,14 +54,7 @@ export default function WebDev() {
                 
                 <div className={"flex flex-row flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10 p-6 md:p-8 lg:p-10 order-2 lg:order-1" + getAnimationClass("object", "down")}>
                     {tech_stack.map((item,index)=>(
-                        <Image 
-                            key={index} 
-                            src={item} 
-                            alt="tech stack icon" 
-                            width={56} 
-                            height={56}
-                            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20"
-                        />
+                        <Image key={index} src={item} alt="tech stack icon" width={56} height={56} className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20" />
                     ))}
                 </div>
 

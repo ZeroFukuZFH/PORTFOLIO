@@ -4,18 +4,12 @@ import Preview from "@/app/components/preview_terminal/preview"
 import { PreviewContentProps } from "@/app/components/preview_terminal/preview"
 import useOnScreen from "@/app/components/custom_hooks/useOnScreen"
 import { useRef } from "react"
-import "./gamedev_animations.css"
-import blender from "../../assets/gamedev_stack/blender.svg"
-import godot from "../../assets/gamedev_stack/godot.svg"
 import Image from "next/image"
 
-const tech_stack = [
-    blender,
-    godot
-]
+const tech_stack : string [] = []
 
 const content = {
-    title: 'Game Development',
+    title: 'Other Projects ',
     paragraph: 'I use Arch BTW',
     button: ['open project','view github repo']
 }
@@ -23,19 +17,19 @@ const content = {
 const preview: PreviewContentProps[] = [
     {
         image: "https://placehold.co/400",
-        title: "Coming soon",
-        desc: "coming soon",
+        title: "making a native GUI framework with OpenGL",
+        desc: "most native GUI frameworks like javafx and qt framework kind of suck to work with and I wanted to try my hands on making a GUI framework with C performance",
         buttonChildren: "open project"
     },
     {
         image: "https://placehold.co/400",
-        title: "3D shooter arkham/doom-like",
-        desc: "I really like the arkham series and doom eternal so i made a game with elements of both games that i liked",
+        title: "Coming soon",
+        desc: "coming soon",
         buttonChildren: "open project"
     },
 ]
 
-export default function GameDev() {
+export default function OtherProjects() {
     const elementRef = useRef(null);
     const isOnScreen = useOnScreen(elementRef);
 
@@ -49,7 +43,7 @@ export default function GameDev() {
                 <div className="flex flex-col lg:flex-row justify-center items-center gap-8 md:gap-12 lg:gap-16 w-full max-w-7xl">
                     
                     <div className={"flex flex-row flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10 p-6 md:p-8 lg:p-10 order-2 lg:order-1" + getAnimationClass("object", "down")}>
-                        {tech_stack.map((item,index)=>(
+                        {tech_stack?.map((item,index)=>(
                             <Image key={index} src={item} alt="tech stack icon" width={56} height={56} className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20" />
                         ))}
                     </div>
